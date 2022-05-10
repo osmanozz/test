@@ -1,3 +1,17 @@
+
+<?php
+ require_once 'database.php';
+
+    $db = new database();
+
+    $tafels = $db->select("SELECT tafel_code from tafels");
+
+    if (empty($tafels)) {
+        echo "Er is geen tafel beschikbaar";
+    }
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,8 +60,22 @@
         <div class="container px-4">
             <div class="row gx-4 justify-content-center">
                 <div class="col-lg-8">
+                     <label>Kies een tafel nummer</label>
+                                <select name="tafel_code">
+                                    <?php foreach($tafels as $tafel) {
+                                        foreach ($tafel as $taf) {
+                                        ?>
+                                        <option name="tafel_code"> <?php echo $tafel['tafel_code'];  
+                                        ?> </option>
+                                    <?php } } ?> 
+                                
+                                </select>
                         <a class="btn btn-primary"
-                            href="tafel-reserveren.php">Bestelling opnemen</a> <br><br>
+                            href="bestellen.php?tafel_code=<?php echo $taf; ?> ">Bestelling opnemen
+                        </a>
+                        
+                           
+                            <br><br>  
                 </div>
                 <div class="col-lg-8">
                         <a class="btn btn-primary"
