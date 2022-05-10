@@ -22,7 +22,13 @@
                     class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link"> 
+                    <?php 
+                    session_start();
+                    echo "Welkom "  . $_SESSION['username']; ?>
                 </ul>
+                <li class="nav-item"><a class="nav-link" href="log-uit.php">Uitloggen</a></li>
+                </li>
             </div>
         </div>
     </nav>
@@ -30,50 +36,41 @@
     <header class="bg-primary bg-gradient text-white">
         <div class="container px-4 text-center">
             <h1 class="fw-bolder">Excellent Taste</h1>
-            <p class="lead">Log in</p>
+            <p class="lead">Overzicht medewerker</p>
         </div>
     </header>
   
 
-<div class="card text-center">
-  <div class="card-header">
-    <div class="card-body">
-    <h2 class="text-muted">LOGIN MEDEWERKER</h2>
-</div>
-            <div class="card-body">
-              <form method="POST">
-                <label for="username">Gebruikersnaam:</label>
-                <input class="rounded" type="text" name="username" required>
-              <br> <br>
-                    <label for="password">Wachtwoord:</label>
-                    <input class="rounded" type="password" name="password" required>
-              <br> <br>
-                      <input class="btn btn-primary" type="submit" name="submit" value="LOGIN">
-        </form>
+    <!-- Reservering section-->
+    <section class="bg-light" id="services">
+        <div class="container px-4">
+            <div class="row gx-4 justify-content-center">
+                <div class="col-lg-8">
+                        <a class="btn btn-primary"
+                            href="tafel-reserveren.php">Bestelling opnemen</a> <br><br>
+                </div>
+                <div class="col-lg-8">
+                        <a class="btn btn-primary"
+                            href="tafel-reserveren.php">Bestellingen</a> <br> <br>
+                </div>
+                <div class="col-lg-8">
+                        <a class="btn btn-primary"
+                            href="tafel-reserveren.php">Producten</a> <br> <br>
+                </div>
+                <div class="col-lg-8">
+                        <a class="btn btn-primary"
+                            href="tafel-reserveren.php">Alle Reserveringen</a> <br> <br>
+                </div>
+                <div class="col-lg-8">
+                        <a class="btn btn-primary"
+                            href="tafel-reserveren.php">Reserveringen vandaag</a> <br> <br>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      </div>
-    </div>
-  </div>
- </body>
-<?php
-
-include "database.php";
-
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
-
-  $username = $_POST['username'];
-    $password = $_POST['password'];
-
-      // USERNAME AND PASSWORD WORDT GEHASHED
-      $username = stripcslashes($username);  
-        $password = stripcslashes($password);  
-
-            $db = new database();
-              $db->login($username, $password);      
-  }
-
-
-?>
+    
+  
     
 
  

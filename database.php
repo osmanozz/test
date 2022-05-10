@@ -57,7 +57,7 @@ class database{
                 session_start();
                 $_SESSION['username'] = $result['username'];
 
-                header("location: ------.php");
+                header("location: overzicht-medewerker.php");
                
             }else{
                 echo 'Username or password is incorrect.';
